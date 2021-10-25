@@ -1,7 +1,7 @@
 # Hack_CCTV_Cam-v3
 
 ## screenshot
-![ ](https://raw.githubusercontent.com/ShuBhamg0sain/Hack_CCTV_Cam-v.2/master/Screenshot_20200928_081243.jpg)
+![ ](https://raw.githubusercontent.com/ShuBhamg0sain/Hack_CCTV_Cam-v3/Delete/Screenshot_20211025_143109.jpg)
 
 
 ### FIND...ME.
