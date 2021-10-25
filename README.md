@@ -15,20 +15,14 @@ Instagram account
 
 ## installation
 
-apt-get install python3
+apt install python2
 
-apt-get install git
+apt install git
 
 git clone https://github.com/ShuBhamg0sain/Hack_CCTV_Cam-v3 
 
 cd Hack_CCTV_Cam-v3
 
-pip3 install requests
-
 pip2 install requests
-
-python3 cam-hackers.py
-
-Or 
 
 python2 cam-hackers.py
