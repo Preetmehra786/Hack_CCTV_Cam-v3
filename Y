@@ -1,13 +1,12 @@
-.class public Ladrt/ADRTLogCatReader;
+.class public Ladrt/ADRTSender;
 .super Ljava/lang/Object;
-.source "ADRTLogCatReader.java"
-
-# interfaces
-.implements Ljava/lang/Runnable;
+.source "ADRTSender.java"
 
 
 # static fields
 .field private static context:Landroid/content/Context;
+
+.field private static debuggerPackageName:Ljava/lang/String;
 
 
 # direct methods
@@ -26,176 +25,288 @@
 .end method
 
 .method public static onContext(Landroid/content/Context;Ljava/lang/String;)V
-    .registers 12
+    .registers 5
 
     .prologue
-    .line 13
+    .line 14
     move-object v0, p0
 
     move-object v1, p1
 
-    sget-object v5, Ladrt/ADRTLogCatReader;->context:Landroid/content/Context;
+    move-object v2, v0
 
-    if-eqz v5, :cond_7
+    sput-object v2, Ladrt/ADRTSender;->context:Landroid/content/Context;
 
-    .line 36
-    :goto_6
+    .line 15
+    move-object v2, v1
+
+    sput-object v2, Ladrt/ADRTSender;->debuggerPackageName:Ljava/lang/String;
+
+    .line 16
     return-void
+.end method
 
-    .line 14
-    :cond_7
-    move-object v5, v0
+.method public static sendBreakpointHit(Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;)V
+    .registers 19
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/String;",
+            ">;)V"
+        }
+    .end annotation
 
-    invoke-virtual {v5}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+    .prologue
+    .line 40
+    move-object v0, p0
 
-    move-result-object v5
+    move-object v1, p1
 
-    sput-object v5, Ladrt/ADRTLogCatReader;->context:Landroid/content/Context;
+    move-object v2, p2
 
-    .line 16
-    const/4 v5, 0x0
+    move-object v3, p3
 
-    move-object v6, v0
+    move-object/from16 v4, p4
 
-    invoke-virtual {v6}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+    move-object/from16 v5, p5
 
-    move-result-object v6
+    move-object/from16 v6, p6
 
-    iget v6, v6, Landroid/content/pm/ApplicationInfo;->flags:I
+    new-instance v8, Landroid/content/Intent;
 
-    const/4 v7, 0x2
+    move-object v11, v8
 
-    and-int/lit8 v6, v6, 0x2
+    move-object v8, v11
 
-    if-eq v5, v6, :cond_21
+    move-object v9, v11
 
-    const/4 v5, 0x1
+    invoke-direct {v9}, Landroid/content/Intent;-><init>()V
 
-    :goto_1c
-    move v2, v5
+    move-object v7, v8
 
-    .line 17
-    move v5, v2
+    .line 41
+    move-object v8, v7
 
-    if-nez v5, :cond_23
+    sget-object v9, Ladrt/ADRTSender;->debuggerPackageName:Ljava/lang/String;
 
-    .line 19
-    goto :goto_6
+    invoke-virtual {v8, v9}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 16
-    :cond_21
-    const/4 v5, 0x0
+    move-result-object v8
 
-    goto :goto_1c
+    .line 42
+    move-object v8, v7
 
-    .line 24
-    :cond_23
-    move-object v5, v0
+    const-string v9, "com.adrt.BREAKPOINT_HIT"
 
-    :try_start_24
-    invoke-virtual {v5}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+    invoke-virtual {v8, v9}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
 
-    move-result-object v5
+    move-result-object v8
 
-    move-object v3, v5
+    .line 43
+    move-object v8, v7
 
-    .line 25
-    move-object v5, v3
+    const-string v9, "package"
 
-    move-object v6, v1
+    move-object v10, v0
 
-    const/16 v7, 0x80
+    invoke-virtual {v8, v9, v10}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    invoke-virtual {v5, v6, v7}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
-    :try_end_30
-    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_24 .. :try_end_30} :catch_50
+    move-result-object v8
 
-    move-result-object v5
+    .line 44
+    move-object v8, v7
 
-    move-object v4, v5
+    const-string v9, "variables"
 
-    .line 32
-    sget-object v5, Ladrt/ADRTLogCatReader;->context:Landroid/content/Context;
+    move-object v10, v1
 
-    move-object v6, v1
+    invoke-virtual {v8, v9, v10}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
 
-    invoke-static {v5, v6}, Ladrt/ADRTSender;->onContext(Landroid/content/Context;Ljava/lang/String;)V
+    move-result-object v8
 
-    .line 34
-    new-instance v5, Ljava/lang/Thread;
+    .line 45
+    move-object v8, v7
 
-    move-object v9, v5
+    const-string v9, "variableValues"
 
-    move-object v5, v9
+    move-object v10, v2
 
-    move-object v6, v9
+    invoke-virtual {v8, v9, v10}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
 
-    new-instance v7, Ladrt/ADRTLogCatReader;
+    move-result-object v8
+
+    .line 46
+    move-object v8, v7
+
+    const-string v9, "variableKinds"
+
+    move-object v10, v3
+
+    invoke-virtual {v8, v9, v10}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
+
+    move-result-object v8
+
+    .line 47
+    move-object v8, v7
+
+    const-string v9, "stackMethods"
+
+    move-object v10, v4
+
+    invoke-virtual {v8, v9, v10}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
+
+    move-result-object v8
+
+    .line 48
+    move-object v8, v7
+
+    const-string v9, "stackLocations"
+
+    move-object v10, v5
+
+    invoke-virtual {v8, v9, v10}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
+
+    move-result-object v8
+
+    .line 49
+    move-object v8, v7
+
+    const-string v9, "stackLocationKinds"
+
+    move-object v10, v6
+
+    invoke-virtual {v8, v9, v10}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
+
+    move-result-object v8
+
+    .line 51
+    sget-object v8, Ladrt/ADRTSender;->context:Landroid/content/Context;
 
     move-object v9, v7
 
-    move-object v7, v9
+    invoke-virtual {v8, v9}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    move-object v8, v9
-
-    invoke-direct {v8}, Ladrt/ADRTLogCatReader;-><init>()V
-
-    const-string v8, "LogCat"
-
-    invoke-direct {v6, v7, v8}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;Ljava/lang/String;)V
-
-    move-object v3, v5
-
-    .line 35
-    move-object v5, v3
-
-    invoke-virtual {v5}, Ljava/lang/Thread;->start()V
-
-    .line 36
-    goto :goto_6
-
-    .line 27
-    :catch_50
-    move-exception v5
-
-    move-object v3, v5
-
-    .line 29
-    goto :goto_6
+    .line 52
+    return-void
 .end method
 
-
-# virtual methods
-.method public run()V
-    .registers 11
+.method public static sendConnect(Ljava/lang/String;)V
+    .registers 7
 
     .prologue
-    .line 42
+    .line 20
     move-object v0, p0
 
-    :try_start_1
-    invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+    new-instance v2, Landroid/content/Intent;
 
-    move-result-object v4
+    move-object v5, v2
 
-    const-string v5, "logcat -v threadtime"
+    move-object v2, v5
 
-    invoke-virtual {v4, v5}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
+    move-object v3, v5
 
-    move-result-object v4
+    invoke-direct {v3}, Landroid/content/Intent;-><init>()V
 
-    move-object v1, v4
+    move-object v1, v2
 
-    .line 43
-    new-instance v4, Ljava/io/BufferedReader;
+    .line 21
+    move-object v2, v1
 
-    move-object v9, v4
+    sget-object v3, Ladrt/ADRTSender;->debuggerPackageName:Ljava/lang/String;
 
-    move-object v4, v9
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
 
-    move-object v5, v9
+    move-result-object v2
 
-    new-instance v6, Ljava/io/InputStreamReader;
+    .line 22
+    move-object v2, v1
+
+    const-string v3, "com.adrt.CONNECT"
+
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v2
+
+    .line 23
+    move-object v2, v1
+
+    const-string v3, "package"
+
+    move-object v4, v0
+
+    invoke-virtual {v2, v3, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v2
+
+    .line 24
+    sget-object v2, Ladrt/ADRTSender;->context:Landroid/content/Context;
+
+    move-object v3, v1
+
+    invoke-virtual {v2, v3}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
+
+    .line 25
+    return-void
+.end method
+
+.method public static sendFields(Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;)V
+    .registers 15
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/String;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 57
+    move-object v0, p0
+
+    move-object v1, p1
+
+    move-object v2, p2
+
+    move-object v3, p3
+
+    move-object v4, p4
+
+    new-instance v6, Landroid/content/Intent;
 
     move-object v9, v6
 
@@ -203,76 +314,208 @@
 
     move-object v7, v9
 
+    invoke-direct {v7}, Landroid/content/Intent;-><init>()V
+
+    move-object v5, v6
+
+    .line 58
+    move-object v6, v5
+
+    sget-object v7, Ladrt/ADRTSender;->debuggerPackageName:Ljava/lang/String;
+
+    invoke-virtual {v6, v7}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v6
+
+    .line 59
+    move-object v6, v5
+
+    const-string v7, "com.adrt.FIELDS"
+
+    invoke-virtual {v6, v7}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v6
+
+    .line 60
+    move-object v6, v5
+
+    const-string v7, "package"
+
+    move-object v8, v0
+
+    invoke-virtual {v6, v7, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v6
+
+    .line 61
+    move-object v6, v5
+
+    const-string v7, "path"
+
     move-object v8, v1
 
-    invoke-virtual {v8}, Ljava/lang/Process;->getInputStream()Ljava/io/InputStream;
+    invoke-virtual {v6, v7, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    move-result-object v8
+    move-result-object v6
 
-    invoke-direct {v7, v8}, Ljava/io/InputStreamReader;-><init>(Ljava/io/InputStream;)V
+    .line 62
+    move-object v6, v5
 
-    const/16 v7, 0x14
+    const-string v7, "fields"
 
-    invoke-direct {v5, v6, v7}, Ljava/io/BufferedReader;-><init>(Ljava/io/Reader;I)V
+    move-object v8, v2
 
-    move-object v2, v4
+    invoke-virtual {v6, v7, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
 
-    .line 45
-    const-string v4, ""
+    move-result-object v6
 
-    move-object v3, v4
+    .line 63
+    move-object v6, v5
 
-    .line 46
-    :goto_27
-    move-object v4, v2
+    const-string v7, "fieldValues"
 
-    invoke-virtual {v4}, Ljava/io/BufferedReader;->readLine()Ljava/lang/String;
+    move-object v8, v3
 
-    move-result-object v4
+    invoke-virtual {v6, v7, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
 
-    move-object v9, v4
+    move-result-object v6
 
-    move-object v4, v9
+    .line 64
+    move-object v6, v5
 
-    move-object v5, v9
+    const-string v7, "fieldKinds"
+
+    move-object v8, v4
+
+    invoke-virtual {v6, v7, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
+
+    move-result-object v6
+
+    .line 65
+    sget-object v6, Ladrt/ADRTSender;->context:Landroid/content/Context;
+
+    move-object v7, v5
+
+    invoke-virtual {v6, v7}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
+
+    .line 66
+    return-void
+.end method
+
+.method public static sendLogcatLines([Ljava/lang/String;)V
+    .registers 7
+
+    .prologue
+    .line 70
+    move-object v0, p0
+
+    new-instance v2, Landroid/content/Intent;
+
+    move-object v5, v2
+
+    move-object v2, v5
 
     move-object v3, v5
 
-    if-eqz v4, :cond_40
+    invoke-direct {v3}, Landroid/content/Intent;-><init>()V
 
-    .line 48
-    const/4 v4, 0x1
+    move-object v1, v2
 
-    new-array v4, v4, [Ljava/lang/String;
+    .line 71
+    move-object v2, v1
 
-    move-object v9, v4
+    sget-object v3, Ladrt/ADRTSender;->debuggerPackageName:Ljava/lang/String;
 
-    move-object v4, v9
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
 
-    move-object v5, v9
+    move-result-object v2
 
-    const/4 v6, 0x0
+    .line 72
+    move-object v2, v1
 
-    move-object v7, v3
+    const-string v3, "com.adrt.LOGCAT_ENTRIES"
 
-    aput-object v7, v5, v6
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
 
-    invoke-static {v4}, Ladrt/ADRTSender;->sendLogcatLines([Ljava/lang/String;)V
-    :try_end_3f
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_3f} :catch_41
+    move-result-object v2
 
-    goto :goto_27
+    .line 73
+    move-object v2, v1
 
-    .line 57
-    :cond_40
-    :goto_40
+    const-string v3, "lines"
+
+    move-object v4, v0
+
+    invoke-virtual {v2, v3, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v2
+
+    .line 74
+    sget-object v2, Ladrt/ADRTSender;->context:Landroid/content/Context;
+
+    move-object v3, v1
+
+    invoke-virtual {v2, v3}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
+
+    .line 75
     return-void
+.end method
 
-    .line 54
-    :catch_41
-    move-exception v4
+.method public static sendStop(Ljava/lang/String;)V
+    .registers 7
 
-    move-object v1, v4
+    .prologue
+    .line 29
+    move-object v0, p0
 
-    goto :goto_40
+    new-instance v2, Landroid/content/Intent;
+
+    move-object v5, v2
+
+    move-object v2, v5
+
+    move-object v3, v5
+
+    invoke-direct {v3}, Landroid/content/Intent;-><init>()V
+
+    move-object v1, v2
+
+    .line 30
+    move-object v2, v1
+
+    sget-object v3, Ladrt/ADRTSender;->debuggerPackageName:Ljava/lang/String;
+
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v2
+
+    .line 31
+    move-object v2, v1
+
+    const-string v3, "com.adrt.STOP"
+
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v2
+
+    .line 32
+    move-object v2, v1
+
+    const-string v3, "package"
+
+    move-object v4, v0
+
+    invoke-virtual {v2, v3, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v2
+
+    .line 33
+    sget-object v2, Ladrt/ADRTSender;->context:Landroid/content/Context;
+
+    move-object v3, v1
+
+    invoke-virtual {v2, v3}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
+
+    .line 34
+    return-void
 .end method
