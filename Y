@@ -1,219 +1,278 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--Open VIP can improve the speed of decompilation, resource code translate to name automatically and activate the smart editing and automatic completion function-->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pubg.imobile"
-    platformBuildVersionCode="28"
-    platformBuildVersionName="9"
-    android:versionCode="15522"
-    android:versionName="1.6.0"
-    android:installLocation="0"
-    android:compileSdkVersion="28"
-    android:compileSdkVersionCodename="9">
-    <uses-sdk
-        android:minSdkVersion="18"
-        android:targetSdkVersion="29" />
-    <uses-feature
-        android:glEsVersion="0x00030000"
-        android:required="true" />
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
-    <!-- Request install packages -->
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-    <!-- Have full network access -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- Modify or delete the contents of your USB storage -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- View network connections -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- Prevent phone from sleeping -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
-    <!-- View Wi-Fi connections -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- Change your audio settings -->
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <!-- Control vibration -->
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="com.qti.permission.PROFILER" />
-    <!-- Read the contents of your USB storage -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- Retrieve running apps -->
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <!-- Connect and disconnect from Wi-Fi -->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <!-- Record audio -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <!-- Access Bluetooth settings -->
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <!-- Access Bluetooth settings -->
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="com.pubg.imobile.permission.C2D_MESSAGE" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="com.android.vending.BILLING" />
-    <!-- Change network connectivity -->
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-feature
-        android:name="android.hardware.touchscreen"
-        android:required="false" />
-    <queries>
-        <package android:name="com.discord" />
-        <package android:name="com.discord" />
-    </queries>
-    <!-- Run at startup -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <!-- This app can appear on top of other apps -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <permission
-        android:name="com.pubg.imobile.permission.C2D_MESSAGE"
-        android:protectionLevel="0x00000002" />
-    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-    <application
-        android:label="@7F10003B"
-        android:icon="@7F080130"
-        android:name="arm.ArmKill"
-        android:hasCode="true"
-        android:allowBackup="true"
-        android:hardwareAccelerated="true"
-        android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:resizeableActivity="false"
-        android:networkSecurityConfig="@7F130006">
-        <meta-data
-            android:name="notch.config"
-            android:value="portrait|landscape" />
-        <meta-data
-            android:name="android.notch_support"
-            android:value="true" />
-        <activity
-            android:theme="@7F11017F"
-            android:label="@7F10003B"
-            android:name="com.epicgames.ue4.SplashActivity"
-            android:debuggable="false"
-            android:launchMode="2"
-            android:screenOrientation="6"
-            android:resizeableActivity="true">
-            <intent-filter>
-                <action
-                    android:name="android.intent.action.MAIN" />
-                <category
-                    android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action
-                    android:name="android.intent.action.VIEW" />
-                <category
-                    android:name="android.intent.category.DEFAULT" />
-                <category
-                    android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="igame1450" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:theme="@7F11017E"
-            android:label="@7F10003B"
-            android:name="com.epicgames.ue4.GameActivity"
-            android:debuggable="false"
-            android:launchMode="2"
-            android:screenOrientation="6"
-            android:configChanges="0x00001FB3"
-            android:resizeableActivity="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="UE4" />
-        </activity>
-        <activity
-            android:theme="@7F11017F"
-            android:name="com.pubg.imobile.DownloaderActivity"
-            android:screenOrientation="6"
-            android:configChanges="0x000016B3" />
-        <meta-data
-            android:name="com.epicgames.ue4.GameActivity.EngineVersion"
-            android:value="4.18.1" />
-        <meta-data
-            android:name="com.epicgames.ue4.GameActivity.DepthBufferPreference"
-            android:value="0" />
-        <meta-data
-            android:name="com.epicgames.ue4.GameActivity.bPackageDataInsideApk"
-            android:value="false" />
-        <meta-data
-            android:name="com.epicgames.ue4.GameActivity.bVerifyOBBOnStartUp"
-            android:value="true" />
-        <meta-data
-            android:name="com.epicgames.ue4.GameActivity.bShouldHideUI"
-            android:value="true" />
-        <meta-data
-            android:name="com.epicgames.ue4.GameActivity.ProjectName"
-            android:value="ShadowTrackerExtra" />
-        <meta-data
-            android:name="com.epicgames.ue4.GameActivity.bHasOBBFiles"
-            android:value="true" />
-        <meta-data
-            android:name="com.epicgames.ue4.GameActivity.BuildConfiguration"
-            android:value="Shipping" />
-        <meta-data
-            android:name="com.epicgames.ue4.GameActivity.bUseExternalFilesDir"
-            android:value="true" />
-        <meta-data
-            android:name="android.min_aspect"
-            android:value="1.0" />
-        <meta-data
-            android:name="com.google.android.gms.games.APP_ID"
-            android:value="@7F10003A" />
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@7F0B0009" />
-        <activity
-            android:theme="@0103000F"
-            android:name="com.google.android.gms.ads.AdActivity"
-            android:exported="false"
-            android:configChanges="0x00000FB0"
-            android:resizeableActivity="true" />
-        <service
-            android:name="com.pubg.imobile.OBBDownloaderService" />
-        <service
-            android:name="com.pubgm.server"
-            android:stopWithTask="true" />
-        <service
-            android:name="com.pubgm.Floating"
-            android:stopWithTask="true" />
-        <receiver
-            android:name="com.pubg.imobile.AlarmReceiver" />
-        <receiver
-            android:name="com.epicgames.ue4.LocalNotificationReceiver" />
-        <meta-data
-            android:name="android.max_aspect"
-            android:value="2.3" />
-        <meta-data
-            android:name="com.tencent.rdm.uuid"
-            android:value="2096e2ac-b50e-4a8c-b01a-59c22386e5c1" />
-        <meta-data
-            android:name="GCloud.GCloud.GameId"
-            android:value="@7F100077" />
-        <meta-data
-            android:name="GCloud.GCloud.GameKey"
-            android:value="@7F100078" />
-        <meta-data
-            android:name="GCloud.GCloudCore.RemoteConfigUrl"
-            android:value="@7F100076" />
-        <meta-data
-            android:name="GCloud.TDM.AppId"
-            android:value="@7F100077" />
-        <meta-data
-            android:name="GCloud.TDM.TGEMIT_ROUTER_ADDRESS_FORMAL"
-            android:value="@7F10016A" />
-        <meta-data
-            android:name="GCloud.TDM.DiskCheckInterval"
-            android:value="@7F0B0008" />
-        <meta-data
-            android:name="GCloud.TDM.DiskCheckCritical"
-            android:value="@7F0B0007" />
-        <provider
-            android:name="com.tencent.gcloud.ApolloProvider"
-            android:exported="false"
-            android:authorities="com.pubg.imobile.ApolloFileprovider"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@7F130000" />
-...
-<!--Over the length of free decompile-->
+.class public Ladrt/ADRTLogCatReader;
+.super Ljava/lang/Object;
+.source "ADRTLogCatReader.java"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# static fields
+.field private static context:Landroid/content/Context;
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 3
+
+    .prologue
+    .line 7
+    move-object v0, p0
+
+    move-object v1, v0
+
+    invoke-direct {v1}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static onContext(Landroid/content/Context;Ljava/lang/String;)V
+    .registers 12
+
+    .prologue
+    .line 13
+    move-object v0, p0
+
+    move-object v1, p1
+
+    sget-object v5, Ladrt/ADRTLogCatReader;->context:Landroid/content/Context;
+
+    if-eqz v5, :cond_7
+
+    .line 36
+    :goto_6
+    return-void
+
+    .line 14
+    :cond_7
+    move-object v5, v0
+
+    invoke-virtual {v5}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+
+    move-result-object v5
+
+    sput-object v5, Ladrt/ADRTLogCatReader;->context:Landroid/content/Context;
+
+    .line 16
+    const/4 v5, 0x0
+
+    move-object v6, v0
+
+    invoke-virtual {v6}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+
+    move-result-object v6
+
+    iget v6, v6, Landroid/content/pm/ApplicationInfo;->flags:I
+
+    const/4 v7, 0x2
+
+    and-int/lit8 v6, v6, 0x2
+
+    if-eq v5, v6, :cond_21
+
+    const/4 v5, 0x1
+
+    :goto_1c
+    move v2, v5
+
+    .line 17
+    move v5, v2
+
+    if-nez v5, :cond_23
+
+    .line 19
+    goto :goto_6
+
+    .line 16
+    :cond_21
+    const/4 v5, 0x0
+
+    goto :goto_1c
+
+    .line 24
+    :cond_23
+    move-object v5, v0
+
+    :try_start_24
+    invoke-virtual {v5}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v5
+
+    move-object v3, v5
+
+    .line 25
+    move-object v5, v3
+
+    move-object v6, v1
+
+    const/16 v7, 0x80
+
+    invoke-virtual {v5, v6, v7}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    :try_end_30
+    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_24 .. :try_end_30} :catch_50
+
+    move-result-object v5
+
+    move-object v4, v5
+
+    .line 32
+    sget-object v5, Ladrt/ADRTLogCatReader;->context:Landroid/content/Context;
+
+    move-object v6, v1
+
+    invoke-static {v5, v6}, Ladrt/ADRTSender;->onContext(Landroid/content/Context;Ljava/lang/String;)V
+
+    .line 34
+    new-instance v5, Ljava/lang/Thread;
+
+    move-object v9, v5
+
+    move-object v5, v9
+
+    move-object v6, v9
+
+    new-instance v7, Ladrt/ADRTLogCatReader;
+
+    move-object v9, v7
+
+    move-object v7, v9
+
+    move-object v8, v9
+
+    invoke-direct {v8}, Ladrt/ADRTLogCatReader;-><init>()V
+
+    const-string v8, "LogCat"
+
+    invoke-direct {v6, v7, v8}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;Ljava/lang/String;)V
+
+    move-object v3, v5
+
+    .line 35
+    move-object v5, v3
+
+    invoke-virtual {v5}, Ljava/lang/Thread;->start()V
+
+    .line 36
+    goto :goto_6
+
+    .line 27
+    :catch_50
+    move-exception v5
+
+    move-object v3, v5
+
+    .line 29
+    goto :goto_6
+.end method
+
+
+# virtual methods
+.method public run()V
+    .registers 11
+
+    .prologue
+    .line 42
+    move-object v0, p0
+
+    :try_start_1
+    invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+
+    move-result-object v4
+
+    const-string v5, "logcat -v threadtime"
+
+    invoke-virtual {v4, v5}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
+
+    move-result-object v4
+
+    move-object v1, v4
+
+    .line 43
+    new-instance v4, Ljava/io/BufferedReader;
+
+    move-object v9, v4
+
+    move-object v4, v9
+
+    move-object v5, v9
+
+    new-instance v6, Ljava/io/InputStreamReader;
+
+    move-object v9, v6
+
+    move-object v6, v9
+
+    move-object v7, v9
+
+    move-object v8, v1
+
+    invoke-virtual {v8}, Ljava/lang/Process;->getInputStream()Ljava/io/InputStream;
+
+    move-result-object v8
+
+    invoke-direct {v7, v8}, Ljava/io/InputStreamReader;-><init>(Ljava/io/InputStream;)V
+
+    const/16 v7, 0x14
+
+    invoke-direct {v5, v6, v7}, Ljava/io/BufferedReader;-><init>(Ljava/io/Reader;I)V
+
+    move-object v2, v4
+
+    .line 45
+    const-string v4, ""
+
+    move-object v3, v4
+
+    .line 46
+    :goto_27
+    move-object v4, v2
+
+    invoke-virtual {v4}, Ljava/io/BufferedReader;->readLine()Ljava/lang/String;
+
+    move-result-object v4
+
+    move-object v9, v4
+
+    move-object v4, v9
+
+    move-object v5, v9
+
+    move-object v3, v5
+
+    if-eqz v4, :cond_40
+
+    .line 48
+    const/4 v4, 0x1
+
+    new-array v4, v4, [Ljava/lang/String;
+
+    move-object v9, v4
+
+    move-object v4, v9
+
+    move-object v5, v9
+
+    const/4 v6, 0x0
+
+    move-object v7, v3
+
+    aput-object v7, v5, v6
+
+    invoke-static {v4}, Ladrt/ADRTSender;->sendLogcatLines([Ljava/lang/String;)V
+    :try_end_3f
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_3f} :catch_41
+
+    goto :goto_27
+
+    .line 57
+    :cond_40
+    :goto_40
+    return-void
+
+    .line 54
+    :catch_41
+    move-exception v4
+
+    move-object v1, v4
+
+    goto :goto_40
+.end method
